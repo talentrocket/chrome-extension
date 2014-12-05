@@ -7,10 +7,9 @@ template = '
 </div>'
 
 $ ->
-  $('body').on 'click', '#talentrocket-scrape-repo', ->
-    alert 'clicked'
-
   $('body.vis-public .repository-sidebar').prepend template
 
-chrome.storage.sync.set (uuid: 'George'), ->
-  console.log('saved uuid')
+  $('body').on 'click', '#talentrocket-scrape-repo', ->
+    console.log 'clicked'
+    # chrome.extension.getBackgroundPage()
+    # open_auth()

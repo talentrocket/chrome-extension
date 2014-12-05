@@ -1,9 +1,10 @@
-'use strict';
+open_auth = ->
+  client_id     = 'c3e916e98a714cab44ef993ef1b673dce38ec297178f602ff04192d662c7486f'
+  redirect_uri  = encodeURIComponent(chrome.identity.getRedirectURL())
 
-chrome.runtime.onInstalled.addListener (details) ->
-  console.log('previousVersion', details.previousVersion)
+  url = "https://talentrocket.io/oauth/authorize?client_id=#{client_id}&redirect_uri=#{redirect_uri}&response_type=token"
 
-chrome.tabs.onUpdated.addListener (tabId) ->
-  chrome.pageAction.show(tabId)
+  chrome.identity.launchWebAuthFlow ('url': url, 'interactive': true), (redirect_url) ->
+    alert redirect_url
 
-console.log('\'Allo \'Allo! Event Page for Page Action')
+open_auth()
