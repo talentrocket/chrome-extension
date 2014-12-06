@@ -11,6 +11,8 @@ module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('grunt-browserify');
+
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -158,6 +160,15 @@ module.exports = function (grunt) {
           dest: './spec',
           ext: '.js'
         }]
+      }
+    },
+
+    // Browserify
+    browserify: {
+      dist: {
+        files: {
+          'app/scripts/contentscript.js': ['app/scripts/contentscript.js'],
+        }
       }
     },
 
@@ -316,11 +327,13 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       chrome: [
-        'coffee:chrome',
+       'coffee:chrome',
+        'browserify',
         'compass:chrome',
       ],
       dist: [
         'coffee:dist',
+        'browserify',
         'compass:dist',
         'imagemin',
         'svgmin'
@@ -348,7 +361,7 @@ module.exports = function (grunt) {
       }
     },
 
-    // Compres dist files to package
+    // Compress dist files to package
     compress: {
       dist: {
         options: {
@@ -364,7 +377,7 @@ module.exports = function (grunt) {
           dest: ''
         }]
       }
-    }
+    },
   });
 
   grunt.registerTask('debug', function () {

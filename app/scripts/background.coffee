@@ -1,3 +1,5 @@
+'use strict';
+
 open_auth = ->
   client_id     = 'c3e916e98a714cab44ef993ef1b673dce38ec297178f602ff04192d662c7486f'
   redirect_uri  = encodeURIComponent(chrome.identity.getRedirectURL())

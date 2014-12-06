@@ -6,10 +6,15 @@ template = '
   <span class="button-text">Scrape repo</span>
 </div>'
 
+talentrocket = require('talentrocket')
+
 $ ->
   $('body.vis-public .repository-sidebar').prepend template
 
   $('body').on 'click', '#talentrocket-scrape-repo', ->
     console.log 'clicked'
+    
+    console.log talentrocket #.Profile.find_by(name: 'name')
+
     # chrome.extension.getBackgroundPage()
     # open_auth()
