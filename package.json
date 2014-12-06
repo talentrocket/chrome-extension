@@ -4,7 +4,7 @@
   "dependencies": {
     "jquery": "latest",
     "lodash": "latest",
-    "talentrocket": "latest"
+    "talentrocket": "git://github.com/talentrocket/talentrocket.js#master"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
